@@ -140,7 +140,12 @@ tmp_cache
 # Will be created from script/split_tests.py
 pytest_buckets.txt
 
+<<<<<<< HEAD
 # AI tooling
 .claude/settings.local.json
 .serena/
 
+=======
+# Custom cspell dictionary
+.cspell
+>>>>>>> 5703b2caff0 (Configure development container and add custom spell check dictionary)

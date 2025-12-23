@@ -2,6 +2,15 @@
   "name": "Home Assistant Dev",
   "context": "..",
   "dockerFile": "../Dockerfile.dev",
+  "remoteUser": "root",
+  "mounts": [
+    // Custom configuration directory
+    "source=${localEnv:HOME}/home-assistant-dev/config,target=${containerWorkspaceFolder}/config,type=bind",
+    "source=${localEnv:HOME}/home-assistant-dev/custom_components/mhi_hvac/custom_components/mhi_hvac,target=${containerWorkspaceFolder}/config/custom_components/mhi_hvac,type=bind",
+    "source=${localEnv:HOME}/home-assistant-dev/custom_libraries/pymhihvac/src/pymhihvac,target=${containerWorkspaceFolder}/config/custom_components/mhi_hvac/pymhihvac,type=bind",
+    "source=${localEnv:HOME}/home-assistant-dev/custom_components/mhi_hvac,target=${containerWorkspaceFolder}/config/custom_components_repo/mhi_hvac,type=bind",
+    "source=${localEnv:HOME}/home-assistant-dev/custom_libraries/pymhihvac,target=${containerWorkspaceFolder}/config/custom_libraries/pymhihvac,type=bind"
+  ],
   "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && script/setup",
   "postStartCommand": "script/bootstrap",
   "containerEnv": {
